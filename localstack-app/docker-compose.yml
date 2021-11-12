@@ -3,7 +3,7 @@ services:
   localstack-app:
     build:
       context: .
-    restart: always
+    restart: on-failure
     networks:
       - localdev
     environment:
