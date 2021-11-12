@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  localstack-app:
+    build:
+      context: .
+    restart: always
+    networks:
+      - localdev
+    environment:
+      DEBUG: "*"
+      AWS_REGION: "eu-central-1"
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_SESSION_TOKEN:
+      AWS_SECURITY_TOKEN:
+      AWS_CONTAINER_CREDENTIALS_FULL_URI:
+      AWS_CONTAINER_AUTHORIZATION_TOKEN:
+      ANAZONAWS_SSM_ENDPOINT: "http://localstack:4566"
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:0.12.18
+    ports:
+      - "127.0.0.1:443:443"
+      - "127.0.0.1:4566:4566"
+      - "127.0.0.1:4571:4571"
+    networks:
+      - localdev
+    environment:
+      - SERVICES=${SERVICES-ssm}
+      - DEBUG=${DEBUG- }
+      - DATA_DIR=${DATA_DIR-/tmp/localstack/data}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR- }
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY- }
+      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
+      - AWS_DEFAULT_REGION=eu-central-1
+      - DISABLE_EVENTS=1
+      - DEBUG_ANALYTICS=1
+    volumes:
+      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./localstack-init:/docker-entrypoint-initaws.d      
+networks:
+  localdev:
+    name: localdev
+    attachable: true
+    driver: bridge
+    
+

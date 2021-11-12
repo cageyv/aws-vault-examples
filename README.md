@@ -6,6 +6,11 @@
 - docker 20+
 - docker-compose 1.27+
 - node and npm (optional) 12+
+- ./tools_checker.sh - for check all tools
+
+### For Apple M1
+- `softwareupdate --install-rosetta`
+- [Docker Desktop](https://docs.docker.com/desktop/mac/apple-silicon/)
 
 ## aws-vault
 
