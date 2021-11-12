@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-sudo aws-vault exec sample --server
-docker-compose up --build
+aws-vault exec sample --server -- docker-compose -f ec2.docker-compose.yml up --build
+docker-compose down -v
+aws-vault proxy --stop
