@@ -1,0 +1,14 @@
+{
+  "name": "sample-app",
+  "version": "1.0.0",
+  "description": "Sample App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladimir Samoylov (cageyv)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1027.0"
+  }
+}
