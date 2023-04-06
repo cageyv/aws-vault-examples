@@ -1,11 +1,11 @@
 # aws-vault-examples
 
 ## Required tools
-- aws-vault 6.13+
-- aws-cli 2.2+
+- aws-vault 7.2+
+- aws-cli 2.11+
 - docker 20+
-- docker-compose 1.27+
-- node and npm (optional) 12+
+- docker-compose 2.15+
+- node and npm (optional) 19+
 - ./tools_checker.sh - for check all tools
 
 ### For Apple M1

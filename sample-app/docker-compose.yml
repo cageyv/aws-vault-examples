@@ -3,11 +3,12 @@ services:
   sample-app:
     build:
       context: .
-    restart: always
+    restart: on-failure
     environment:
       DEBUG: "*"
       AWS_REGION: "eu-central-1"
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
       AWS_SESSION_TOKEN:
+      AWS_CREDENTIAL_EXPIRATION:
     network_mode: host    

@@ -1,4 +1,4 @@
-FROM node:12.22.3-alpine3.14
+FROM node:19-alpine3.16
 RUN apk add --no-cache dumb-init=~1.2
 
 COPY package.json /app/package.json
